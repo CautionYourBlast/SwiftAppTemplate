@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/* MIXINS AND FUNCTIONS
+ *
+ * BEM NAMING CONVENTION
+ * Elements are noted with __ (double underscore), for example .chapter__heading
+ * Modifiers are noted with -- (double dash), for example .chapter--splash
+ * Element mixin: @include e(heading) outputs &__heading
+ * Modifier mixin: @include m(splash) outputs &--splash
+
+ * FUNCTION - COLOUR PALETTE
+ * See _variables.scss. Accepts two parameters [blues, reds, greens etc] and colour variant.
+ *
+ *
+ *
+ * MIXIN – COLOUR SCHEME
+ * Controls the colour scheme of the site.
+ *
+ *
+ */
+/**
+.colourscheme {
+  @include m(blue){
+    @include colourscheme('blues');
+  }
+
+  @include m(red) {
+    @include colourscheme('reds');
+  }
+
+  @include m(green) {
+    @include colourscheme('greens');
+  }
+} */
+body, html {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: grey;
+}
+
+div.welcome {
+  height: 100%;
+  text-align: center;
+}
+
+div.welcome img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+}
+
+/*# sourceMappingURL=app.css.map */

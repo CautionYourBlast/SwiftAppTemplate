@@ -1,0 +1,75 @@
+/* MIXINS AND FUNCTIONS
+ *
+ * BEM NAMING CONVENTION
+ * Elements are noted with __ (double underscore), for example .chapter__heading
+ * Modifiers are noted with -- (double dash), for example .chapter--splash
+ * Element mixin: @include e(heading) outputs &__heading
+ * Modifier mixin: @include m(splash) outputs &--splash
+
+ * FUNCTION - COLOUR PALETTE
+ * See _variables.scss. Accepts two parameters [blues, reds, greens etc] and colour variant.
+ *
+ *
+ *
+ * MIXIN – COLOUR SCHEME
+ * Controls the colour scheme of the site.
+ *
+ *
+ */
+
+
+//element selector
+@mixin e($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+//modifier selector
+@mixin m($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+
+
+@function palette(
+  $name: 'primary',
+  $variant: $colour-key,
+  $opacity: 1
+) {
+  $color: null;
+
+  // Get the color spectrum
+  $color-spectrum: map-get($colours, $name);
+
+  // Get the color variant
+  @if $color-spectrum {
+    $color: map-get($color-spectrum, $variant);
+  }
+
+
+  @return $color;
+}
+
+
+
+@mixin colourscheme($colours){
+
+}
+
+/**
+.colourscheme {
+  @include m(blue){
+    @include colourscheme('blues');
+  }
+
+  @include m(red) {
+    @include colourscheme('reds');
+  }
+
+  @include m(green) {
+    @include colourscheme('greens');
+  }
+} */
