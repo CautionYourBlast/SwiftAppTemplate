@@ -4,23 +4,17 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftWebApp",
-    products: [
-        .library(name: "App", targets: ["App"]),
-        .executable(name: "Run", targets: ["Run"])
-    ],
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "2.2.0")),
-        .package(url: "https://github.com/vapor/leaf-provider.git", .upToNextMajor(from: "1.1.0")),
+        // 💧 A server-side Swift web framework.
+        .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0"),
+        .package(url: "https://github.com/vapor/leaf.git", from:"3.0.0-rc.2"),
         .package( url: "https://github.com/robinwalterfit/Swift-Sass.git", from: "1.0.0" ),
+        
     ],
     targets: [
-        .target(
-            name: "App",
-            dependencies: ["Vapor", "LeafProvider"],
-            exclude: ["Config", "Database", "Public", "Resources"]
-        ),
+        .target(name: "App", dependencies: ["Vapor","Leaf", "Sass"]),
         .target(name: "Run", dependencies: ["App"]),
-        .testTarget(name: "AppTests", dependencies: ["App", "Testing"])
+        .testTarget(name: "AppTests", dependencies: ["App"])
     ]
 )
 

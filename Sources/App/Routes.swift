@@ -1,25 +1,25 @@
 import Vapor
+import Leaf
 
-final class Routes: RouteCollection {
-    let view: ViewRenderer
-    init(_ view: ViewRenderer) {
-        self.view = view
+
+public func routes(_ router: Router) throws {
+
+    /// GET /
+    router.get() { req -> Future<View> in
+        let leaf = try req.make(LeafRenderer.self)
+//        return try self.view.make("welcome")
+        let context = [String: String]()
+        return leaf.render("welcome", context)
     }
 
-    func build(_ builder: RouteBuilder) throws {
-        /// GET /
-        builder.get { req in
-            return try self.view.make("welcome")
-        }
+    /// GET /hello/...
+//    router.get(resource("hello", HelloController(view)))
 
-        /// GET /hello/...
-        builder.resource("hello", HelloController(view))
-
-        // response to requests to /info domain
-        // with a description of the request
-        builder.get("info") { req in
-            return req.description
-        }
-
+    // response to requests to /info domain
+    // with a description of the request
+    router.get("info") { req in
+        return req.description
     }
+
+
 }

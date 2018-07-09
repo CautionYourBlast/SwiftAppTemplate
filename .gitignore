@@ -4,5 +4,6 @@ Packages
 .DS_Store
 *.xcodeproj
 DerivedData/
-*.css
-*.css.map
+Package.resolved
+Public/styles/*.css
+

@@ -1,10 +1,12 @@
+$grey: #ccc;
+
 body, html {
 	height: 100%;
 }
 
 body {
 	font-family: sans-serif;
-	background-color: grey;
+	background-color: $grey;
 }
 
 div.welcome {
@@ -18,3 +20,4 @@ div.welcome img {
   	transform: translateY(-50%);
 	width: 300px;
 }
+
